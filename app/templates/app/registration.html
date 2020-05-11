@@ -1,0 +1,37 @@
+{% extends "app/layout.html" %}
+
+{% block content %}
+<style>
+  html {
+    min-height: 100%;
+}
+
+   body {
+
+   
+    background-image: url(../../static/app/content/bg.jpg) ;  /* Фоновая картинка */
+    background-size: cover; /* Растягиваем фон */
+    background: linear-gradient(#F001d18 45%   , #fffafa 45% ,  #ffcfab        ); 
+    background-color: #93B874;  
+   }
+   .block {
+    background: rgba(0,0,0,0.6); /* Полупрозрачный фон */
+    color: #fff; /* Цвет текста */
+    padding: 25px; /* Поля вокруг текста */
+   }
+</style>
+<h2>Регистрация пользователя</h2>
+
+<form method="POST" > {% csrf_token %}
+
+<div>
+
+{{ regform.as_p}}
+
+<button type="submit" class="save btn btn-default" > Зарегистрировать </button>
+
+</div>
+
+</form>
+
+{% endblock %}

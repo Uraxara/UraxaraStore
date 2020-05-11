@@ -1,0 +1,170 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale="1.0">
+    <title>{{ title }} - My Django Application</title>
+    {% load staticfiles %}
+    <link rel="stylesheet" type="text/css" href="{% static 'app/content/bootstrap.min.css' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'app/content/site.css' %}" />
+    <script src="{% static 'app/scripts/modernizr-2.6.2.js' %}"></script>
+	 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+
+<style>
+
+.nav-item dropdow {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-menu {
+  display: none;
+  position: absolute;
+  background-color: #4E4E4E   ;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dropdown-menu a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown-menu a:hover {background-color: #ddd;}
+
+.dropdown:hover .dropdown-menu {display: block;}
+
+
+
+.navbar-inverse {
+    background-color: #17171A  ;
+    body {
+
+   
+    background-image: url(../../static/app/content/bg.jpg) ;  /* Фоновая картинка */
+    background-size: cover; /* Растягиваем фон */
+    background: linear-gradient(#F001d18 45%   , #fffafa 45% ,  #ffcfab        ); 
+    background-color: #93B874; 
+   }
+   .headler{
+    background: rgba(0,0,0,0.6); /* Полупрозрачный фон */
+    color: #fff; /* Цвет текста */
+	 min-width: 160px;
+	 width: 300px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    padding: 20px; /* Поля вокруг текста */
+   }
+   .block{
+    background: rgba(0,0,0,0.6); /* Полупрозрачный фон */
+    color: #fff; /* Цвет текста */
+	 width: 300px;
+    padding: 20px 20px /* Поля вокруг текста */
+	
+ 
+   }
+
+ .btn{
+  padding: 0;
+  border: none;
+  font: inherit;
+  color: red;
+  background-color: transparent;
+ }
+ .btn:active {
+  transform: translateY(1px);
+  filter: saturate(150%);
+}
+.btn:hover {
+  color: #9050aa;
+  border-color: currentColor;
+  background-color: rgba(0,0,0,0.2);
+}
+.btn:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(255, 105, 180, 0.5),
+    0 0 0 1.5px rgba(255, 105, 180, 0.5);
+}
+
+/* скрываем фокусные стили, если используется не клавиатура */
+.js-focus-visible .btn:focus:not(.focus-visible) {
+  box-shadow: none;
+}
+    
+</style>
+
+</head>
+
+<body>
+
+    <div class="navbar navbar-inverse navbar-fixed-top" style="font-family:Arial; font-size:15px; ;">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a href="/" class="navbar-brand"> <img src="{% static 'app/content/sitepng10.png ' %}"width="25%" alt="logo" /> </a>
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+				   <li class="nav-item dropdown">
+						<a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown" style="margin:0px">
+        Каталог:
+							</a>
+							
+		<div class="dropdown-menu">
+			<a class="dropdown-item" href="{% url 'a1' %}" style="color:white" font-size="12px">игровые консоли</a>
+			<a class="dropdown-item" href="{% url 'a2' %}"style="color:white" font-size="12px">аксессуары к консолям</a>
+			<a class="dropdown-item" href="{% url 'a3' %}"style="color:white" font-size="12px">игровые консоли с аксессуарами</a>
+		</div>
+    </li>
+					
+					
+                    <li><a href="{% url 'about' %}" style="margin:0px">О магазине</a></li>
+                    <li><a href="{% url 'call' %}" style="margin:0px">Контакты</a></li>
+                    <li><a href="{% url 'contact' %}" style="margin:0px">Проекты</a></li>
+					{% if user.is_authenticated %}
+					<li><a href="{% url 'blog' %}" style="margin:0px">Сделать заказ</a></li>
+					<li><a href="{% url 'cart' %}" style="margin:0px">Корзина</a></li>
+					{% if user.is_staff %}
+					<li><a href="{% url 'post' %}"style="margin:0px" font-size:32px>||+||</a></li>
+				
+					 {% endif %}
+						{% endif %}
+					{% if not user.is_authenticated %}
+
+					<li><a href="{% url 'registration' %}"style="margin-left:360px">Регистрация</a></li>
+
+					{% endif %}
+					
+                </ul>
+				
+                {% include 'app/loginpartial.html' %}
+			
+			
+            </div>
+					
+        </div>
+		
+    </div>
+
+    <div class="container body-content">
+	
+{% block content %}{% endblock %}
+        
+    </div>
+
+    <script src="{% static 'app/scripts/jquery-1.10.2.js' %}"></script>
+    <script src="{% static 'app/scripts/bootstrap.js' %}"></script>
+    <script src="{% static 'app/scripts/respond.js' %}"></script>
+{% block scripts %}{% endblock %}
+
+</body>
+</html>

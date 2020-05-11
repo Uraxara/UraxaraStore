@@ -1,0 +1,53 @@
+﻿{% extends "app/layout.html" %}
+
+{% block content %}
+<html>
+<head>
+    <meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+	   {% load staticfiles %}
+  <title>Фон</title>
+  <style>
+  html {
+    min-height: 100%;
+}
+
+
+ figure {
+    width: 27%; /* Ширина */
+    float: left; /* Выстраиваем элементы по горизонтали */
+     margin: 0 0 0 1.5%;
+    background: rgba(0,0,0,0.6);/* Цвет фона */
+    border-radius: 10px; /* Радиус скругления */
+    padding: 25px; /* Поля */
+   }
+   figure:first-child {
+    margin-left: 90px; /* Убираем отступ для первого элемента */
+	 width: 23%; 
+	  padding: 20px; /* Поля */
+	 
+   }
+
+  </style>
+ 
+ </head>
+ <body>
+  <div class="block">
+   <h1>В наличии:</h1>
+   
+ <p>•	Playstation 4 PRO 1TB + Playstation VR </p>
+ <p>•	Xbox One X 1TB + 2 геймпада </p>
+ <p>•	Xbox One S 1TB + 2 геймпада </p>
+ <p>•	Игровая приставка Nintendo Switch (серий) + Joy-Con </p>
+ <p>•	Игровая приставка Nintendo Switch (красный) + Joy-Con </p>
+  </div>
+  </div>
+  <div class="image">
+  <figure><p><img src="{% static 'app/content/t1.jpg ' %}" alt="logo" width="100%" /> </p></figure>
+  <figure><p><img src="{% static 'app/content/t4.jpg ' %}" alt="logo" width="100%" /> </p></figure>
+  <figure><p><img src="{% static 'app/content/t5.jpg ' %}" alt="logo" width="100%" /> </p></figure>
+    </div>
+ </body>
+</html>
+	{% endblock %}

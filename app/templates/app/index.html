@@ -1,0 +1,239 @@
+{% extends "app/layout.html" %}
+
+{% block content %}
+ {% load staticfiles %}
+  <style>
+  html {
+    min-height: 100%;
+}
+
+   body {
+    padding: 120px;
+     overflow-x: hidden;
+ font-family: cursive;
+   text-align: center;
+   }
+
+.spoiler>input{
+    position: absolute;
+    top: -9999px;
+    left: -9999px;
+}
+.spoiler>label{
+
+  text-decoration: none;
+  outline: none;
+  color: white;
+  display: inline-block;
+  position: relative;
+  padding: 15px 60px;
+  border: 2px solid;
+  border-image: linear-gradient(180deg, #ff3000, #ed0200, #ff096c, #d50082);
+  border-image-slice: 1;
+  margin: 10px 20px;   font-family: 'Montserrat', sans-serif;
+  text-transform: uppercase;
+  overflow: hidden;
+  letter-spacing: 3px;
+  transition: .8s cubic-bezier(.165,.84,.44,1);
+}
+
+.spoiler>label:before{
+content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 0;
+  width: 100%;
+  z-index: -1;
+  color: white;
+  background: linear-gradient(180deg, #ff3000, #ed0200, #ff096c, #d50082);
+  transition: .8s cubic-bezier(.165,.84,.44,1);
+}
+.spoiler>label:hover{
+   
+	color:white;
+}
+.spoiler>label:hover:before{
+    bottom: 0%;
+  top: auto;
+  height: 100%;
+}
+
+.spoiler>label.tog:before {
+    content: "1 Глава ";
+	
+}
+.spoiler>label.tog1:before {
+    content: "2 Глава ";
+	
+}
+.spoiler>input:checked ~ label{
+    border-radius: 3px 3px 0 0;
+}
+.spoiler>input:checked ~ label.tog:before {
+    content: "Закрыть";
+	
+}
+.spoiler>input:checked ~ label.tog{
+    
+}
+.spoiler>input:checked ~ label.tog1:before {
+    content: "Закрыть";
+	
+}
+.spoiler>input:checked ~ label.tog1{
+    
+}
+.spoiler>input:checked ~ .sp-content{
+
+    display: block;
+	
+}
+.spoiler>input:checked ~ .sp-content1{
+
+    display: block;
+	
+}
+.spoiler>.sp-content1 {
+    
+	
+	display: none;
+    border: 0px solid #AAA;
+   background: rgba(0,0,0,0.0);
+color: #fff;
+    padding: 5px 10px;
+    margin-top: -1px;
+    border-radius: 0 0 3px 3px;
+}
+
+.spoiler>.sp-content {
+    
+	
+	display: none;
+    border: 1px solid #AAA;
+   background: rgba(0,0,0,0.6);
+color: #fff;
+    padding: 5px 10px;
+    margin-top: -1px;
+    border-radius: 0 0 3px 3px;
+}
+
+
+
+.poost{ border: 2px solid;
+  border-image: linear-gradient(180deg, #ff3000, #ed0200, #ff096c, #d50082);
+  border-image-slice: 1;
+  
+  background: rgba(0,0,0,0.6); /* Полупрозрачный фон */
+    color: #FFFFFF; /* Цвет текста */
+    padding: 20px; /* Поля вокруг текста */
+	 overflow: hidden;
+  letter-spacing: 2px;
+  transition: .8s cubic-bezier(.165,.84,.44,1);
+  
+  
+  
+  
+  }
+  
+  
+  
+  h1 {
+	display: table;
+
+	font-family: "Roboto Slab";
+
+
+     background-color: #FFFFFF;
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+
+	
+	text-align:start; 
+	margin-top: 0px;
+}
+
+  </style>
+
+   <script src = 'http://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js'></script>
+        <script>
+            $(document).ready(function(){
+                $(document).on('click' , '#add_comment' , function(){
+                    var form = $("form[name = 'form']");
+                    form.css("display" , "block");
+                    $("#add_comment").replaceWith(form)
+                });
+                
+            $(document).on('click' , "input[name = 'send']" , function(){
+			
+                var comment = $('textarea[name = \'comment\']').val();
+                alert("server good ...");
+                $("<p> " + comment + "</p>").appendTo("#comments");
+            })
+            })
+			function hideAndShow () {
+   $("#hide, #show").toggle();
+   $("#comments").slideToggle(1000);
+  }
+  $(document).ready(function () {
+   $(document).on("click", "#hide, #show", hideAndShow);
+  });
+        </script>
+		<script type="text/javascript">
+function visibility (closeText, openText) {
+    document.getElementById(closeText).style.display='none';
+    document.getElementById(openText).style.display='';
+}
+</script>
+
+
+ 
+
+  <body>
+ 
+
+
+<div class="button">
+	<a class="button1" href="{% url 'newss' %}">ДОБАВИТЬ НОВОСТЬ</a>
+ </div>
+<div class="spoiler" >
+    <input type="checkbox" id="sp2"  />
+    <label for="sp2">Новости</label>
+    <div class="sp-content1"><img src="{% static 'app/content/k10.jpg ' %}" alt="logo" width="20%" />
+	
+	
+{%  for news in news  %} 
+{% if user.is_staff %}  
+
+ <div class="poost">
+<h1 style="font-size:25px;  text-align:start; margin-top: 0px; "> {{ news.NewsName }} </h1> 
+<h1 style="font-size:25px;  text-align:start; margin-top: 0px; "> {{ news.cont }} </h1> 
+
+
+ {% if user.is_superuser %} 
+<div class="button">
+ <a class="button1" href="{{ news.id}}/delete">Удалить новость</a>
+ </div>
+ {% endif %}
+
+ </div>
+   {% endif %}
+{%  endfor %}
+	
+	
+
+	
+	</div>
+
+
+
+
+
+</div>
+
+ 
+  
+
+    </body>
+
+{% endblock %}

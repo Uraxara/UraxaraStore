@@ -1,0 +1,74 @@
+body {
+    background-image: url(bg.jpg); /* Фоновая картинка */
+    background-size: cover; /* Растягиваем фон */
+    background: linear-gradient(#F001d18 45%, #fffafa 45%, #ffcfab );
+    background-color: #93B874;
+}
+
+.block {
+    background: rgba(0,0,0,0.6); /* Полупрозрачный фон */
+    color: #fff; /* Цвет текста */
+    padding: 25px; /* Поля вокруг текста */
+    border-radius: 10px;
+}
+body {
+    padding-top: 50px;
+    padding-bottom: 20px;
+    background: linear-gradient(#F001d18 45%, #fffafa 45%, #ffcfab );
+}
+
+/* Set padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select,
+textarea {
+    max-width: 280px;
+}
+
+/* styles for validation helpers */
+.field-validation-error {
+    color: #b94a48;
+}
+
+.field-validation-valid {
+    display: none;
+}
+
+input.input-validation-error {
+    border: 1px solid #b94a48;
+}
+
+input[type="checkbox"].input-validation-error {
+    border: 0 none;
+}
+
+.validation-summary-errors {
+    color: #b94a48;
+}
+
+.validation-summary-valid {
+    display: none;
+}
+.block {
+    background: rgba(0,0,0,0.6); /* Полупрозрачный фон */
+    color: #fff; /* Цвет текста */
+    padding: 25px; /* Поля вокруг текста */
+}
+
+figure {
+    width: 29%; /* Ширина */
+    float: left; /* Выстраиваем элементы по горизонтали */
+    margin: 0 0 0 1.5%;
+    background: rgba(0,0,0,0.6); /* Цвет фона */
+    border-radius: 10px; /* Радиус скругления */
+    padding: 25px; /* Поля */
+}
+
+    figure:first-child {
+        margin-left: 65px; /* Убираем отступ для первого элемента */
+    }

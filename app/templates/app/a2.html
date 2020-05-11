@@ -1,0 +1,52 @@
+﻿{% extends "app/layout.html" %}
+
+{% block content %}
+<html>
+<head>
+    <meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+	   {% load staticfiles %}
+  <title>Фон</title>
+  <style>
+  html {
+    min-height: 100%;
+}
+
+ figure {
+    width: 29%; /* Ширина */
+    float: left; /* Выстраиваем элементы по горизонтали */
+     margin: 0 0 0 1.5%;
+    background: rgba(0,0,0,0.6);/* Цвет фона */
+    border-radius: 10px; /* Радиус скругления */
+    padding: 25px; /* Поля */
+   }
+   figure:first-child {
+    margin-left: 65px; /* Убираем отступ для первого элемента */
+   }
+
+
+
+  </style>
+ 
+ </head>
+ <body>
+  <div class="block">
+   <h1>В наличии:</h1>
+   
+  
+ <p>•	PlayStation VR </p>
+ <p>•	Геймпад для консоли Xbox One (Elite) </p>
+ <p>•	Геймпад для Nintendo Switch Pro Controller </p>
+ <p>•	Геймпад для Nintendo Switch Joy-Con </p>
+ <p>•	Геймпад для консоли Xbox One </p>
+  </div>
+  </div>
+  <div class="image">
+  <figure><p><img src="{% static 'app/content/d1.jpg ' %}" alt="logo" width="100%" /> </p></figure>
+  <figure><p><img src="{% static 'app/content/d2.jpg ' %}" alt="logo" width="100%" /> </p></figure>
+  <figure><p><img src="{% static 'app/content/d3.jpg ' %}" alt="logo" width="100%" /> </p></figure>
+    </div>
+ </body>
+</html>
+	{% endblock %}

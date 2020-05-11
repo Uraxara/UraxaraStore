@@ -1,0 +1,76 @@
+{% extends "app/layout.html" %}
+
+{% block content %}
+{% load staticfiles %}
+
+  <style>
+  html {
+    min-height: 100%;
+}
+
+
+   .headler{
+    background: rgba(0,0,0,0.6); /* Полупрозрачный фон */
+    color: #fff; /* Цвет текста */
+	 min-width: 160px;
+	 width: 300px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    padding: 20px; /* Поля вокруг текста */
+   }
+   .block{
+    background: rgba(0,0,0,0.6); /* Полупрозрачный фон */
+    color: #fff; /* Цвет текста */
+	 width: 300px;
+    padding: 20px 20px /* Поля вокруг текста */
+	
+ 
+   }
+
+ .btn{
+  padding: 0;
+  border: none;
+  font: inherit;
+  color: red;
+  background-color: transparent;
+ }
+ .btn:active {
+  transform: translateY(1px);
+  filter: saturate(150%);
+}
+.btn:hover {
+  color: #9050aa;
+  border-color: currentColor;
+  background-color: rgba(0,0,0,0.2);
+}
+.btn:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(255, 105, 180, 0.5),
+    0 0 0 1.5px rgba(255, 105, 180, 0.5);
+}
+.image{
+position: absolute; /* Абсолютное позиционирование */
+    top: 332px; /* Положение от верхнего края */
+    right: 1020px; /* Положение от правого края */
+    line-height: 1px;
+}
+/* скрываем фокусные стили, если используется не клавиатура */
+.js-focus-visible .btn:focus:not(.focus-visible) {
+  box-shadow: none;
+}
+  </style>
+   <div class="headler">
+    <h1>О магазине: </h1>
+    </div>
+ <div class="block">
+
+   <p>Вы находитесь на официальном сайте магазина Uraxara store. Мы предлагаем вам купить игровые консоли, а так же аксессуары к ним. Наш магазин уже более 10 лет на рынке и имеет отличную репутацию </p>
+  
+  </div>
+<div class="image">
+  <p align="right"> <img src="{% static 'app/content/img102.png ' %}" alt="logo" width="50%" /> </p>
+    </div>
+ 
+  </p>
+
+
+{% endblock %}
