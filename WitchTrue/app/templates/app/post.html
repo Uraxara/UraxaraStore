@@ -1,0 +1,253 @@
+{% extends "app/layout.html" %} 
+ 
+{% block content %} 
+   <html lang="ru-ru" >
+<head>
+
+<script type="text/javascript" src="/admin/jsi18n/"></script>
+<script type="text/javascript" src="/static/admin/js/core.js"></script>
+<script type="text/javascript" src="/static/admin/js/vendor/jquery/jquery.js"></script>
+<script type="text/javascript" src="/static/admin/js/jquery.init.js"></script>
+<script type="text/javascript" src="/static/admin/js/admin/RelatedObjectLookups.js"></script>
+<script type="text/javascript" src="/static/admin/js/actions.js"></script>
+<script type="text/javascript" src="/static/admin/js/urlify.js"></script>
+<script type="text/javascript" src="/static/admin/js/prepopulate.js"></script>
+<script type="text/javascript" src="/static/admin/js/vendor/xregexp/xregexp.js"></script>
+<script type="text/javascript" src="/static/admin/js/calendar.js"></script>
+<script type="text/javascript" src="/static/admin/js/admin/DateTimeShortcuts.js"></script>
+
+
+</head>
+ <style>
+
+ html {
+    min-height: 100%;
+}
+
+   body {
+   
+     text-decoration: none;
+  outline: none;
+  color: white;
+
+ 
+ 
+ 
+ 
+   
+
+   text-align: center;
+   
+    background-image: url(../../static/app/content/bg.jpg) ;  /* Фоновая картинка */
+    background-size: cover; /* Растягиваем фон */
+    background: linear-gradient(#F69213 10%   , #A400C4 75% ,  #0B0B7A        ); 
+    background-color: #93B874; 
+   }
+   .block {
+    background: rgba(0,0,0,0.6); /* Полупрозрачный фон */
+    color: #fff; /* Цвет текста */
+    padding: 20px; /* Поля вокруг текста */
+	
+	
+	 margin: 10px 70px;
+	 
+	  border-radius: 58px;
+   }
+
+.poost{ border: 5px solid;
+  border-image: linear-gradient(180deg, #ff3000, #ed0200, #ff096c, #d50082);
+  border-image-slice: 1;
+  
+  background: rgba(0,0,0,0.6); /* Полупрозрачный фон */
+    color: #fff; /* Цвет текста */
+    padding: 20px; /* Поля вокруг текста */
+	 overflow: hidden;
+  letter-spacing: 2px;
+  transition: .8s cubic-bezier(.165,.84,.44,1);
+  
+  
+  
+  
+  }
+  
+  
+  
+  h1 {
+	display: table;
+
+	font-family: "Roboto Slab";
+
+
+	background: linear-gradient(330deg, #e05252 0%, #99e052 25%, #52e0e0 50%, #9952e0 75%, #e05252 100%);
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+
+	
+	text-align:start; 
+	margin-top: 0px;
+}
+  
+  
+  
+  
+  .post1 {
+  background: rgba(0,0,0,0.2); /* Полупрозрачный фон */
+    color: #fff; /* Цвет текста */
+    padding: 20px; /* Поля вокруг текста */
+	
+	
+	 margin: 10px 70px;
+	 
+	  border-radius: 58px;
+	  
+	  
+	  
+  }
+  
+  
+  
+.button1{
+  text-decoration: none;
+    text-align: center;
+  outline: none;
+  display: inline-block;
+  padding: 5px 40px;
+  margin: 10px 20px;
+  position: relative;
+  overflow: hidden;
+  border: 2px solid ;
+    background-color: rgba(0,0,0,0.1);
+  border-color: rgba(0,0,0,0.1);
+  
+  border-radius: 18px;
+  font-family: 'Montserrat', sans-serif; 
+  font-size:20px;
+  color: rgba(0,0,0,0.0);
+  transition: .4s ease-in-out;
+}
+.button1:before {
+  content: "";
+  
+  border-color: rgba(0,0,0,0.0);
+  
+  background: linear-gradient(90deg, rgba(255,255,255,.1), rgba(255,255,255,.5));
+  height: 85px;
+  width: 50px;
+  position: absolute;
+  top: -8px;
+  left: -75px;
+  transform: skewX(-45deg);
+}
+.button1:hover {
+  background: #5E1090;
+  color: #fff;
+}
+.button1:hover:before {
+  left: 350px;
+  transition: .9s ease-in-out;
+}
+textarea#id_phone {
+height:50px;
+}
+
+title#id_title {
+height:200px;
+}
+
+textarea {
+display:block;
+
+height:100px;/*Длина:400px*/
+margin:0 auto;
+resize:vertical;
+outline:none;/*Светящаяся рамка:убераем*/
+border-width:2px;/*Ширина рамки:2px*/
+border-radius:10px;/*Скругление углов:2px*/
+
+border-color:#5E1090;
+
+font-size:18pt;/*Размер шрифта:12pt*/
+color:#464346;
+
+text-align:start;/*Положение текста:по центру*/
+background:#FFD8C7;
+font-style: oblique;
+ 
+}
+input#id_title{
+display:block;
+
+height:80px;/*Длина:400px*/
+margin:0 auto;
+resize:vertical;
+outline:none;/*Светящаяся рамка:убераем*/
+border-width:2px;/*Ширина рамки:2px*/
+border-radius:10px;/*Скругление углов:2px*/
+
+border-color:#5E1090;
+
+font-size:18pt;/*Размер шрифта:12pt*/
+color:#464346;
+
+text-align:start;/*Положение текста:по центру*/
+background:#FFD8C7;
+font-style: oblique;
+ 
+}
+input#id_posted{
+display:block;
+
+height:40px;/*Длина:400px*/
+width:140px;
+margin:0 auto;
+resize:vertical;
+outline:none;/*Светящаяся рамка:убераем*/
+border-width:2px;/*Ширина рамки:2px*/
+border-radius:10px;/*Скругление углов:2px*/
+
+border-color:#5E1090;
+
+font-size:10pt;/*Размер шрифта:12pt*/
+color:#464346;
+
+text-align:start;/*Положение текста:по центру*/
+background:#FFD8C7;
+font-style: oblique;
+ 
+}
+
+
+
+  </style>
+  
+
+
+{% if user.is_staff %}
+</br>
+</br>
+</br>
+<div class="post1">
+    <form action="" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <table>
+            {{ form.as_p }}
+        </table>
+		
+        <input type="submit" value="Принять" class="button1"/>
+		
+    </form>
+</div>
+ {% endif %}
+    
+
+    
+
+    
+        
+    
+
+
+
+
+
+{% endblock %}

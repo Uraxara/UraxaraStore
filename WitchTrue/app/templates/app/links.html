@@ -1,0 +1,57 @@
+﻿{% extends "app/layout.html" %}
+
+{% block content %}
+<html>
+<head>
+    <meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+	   {% load staticfiles %}
+  <title>Фон</title>
+  <style>
+  html {
+    min-height: 100%;
+}
+
+   body {
+
+   
+    background-image: url(../../static/app/content/bg.jpg) ;  /* Фоновая картинка */
+    background-size: cover; /* Растягиваем фон */
+    background: linear-gradient(#F69213 10%   , #A400C4 75% ,  #0B0B7A        ); 
+    background-color: #93B874; 
+   }
+   .block {
+    background: rgba(0,0,0,0.6); /* Полупрозрачный фон */
+    color: #fff; /* Цвет текста */
+    padding: 20px; /* Поля вокруг текста */
+   }
+  figure {
+    width: 27%; /* Ширина */
+    float: left; /* Выстраиваем элементы по горизонтали */
+    margin: 0 0 0 3.5%; /* Отступ слева */
+    background: #f0f0f0; /* Цвет фона */
+    border-radius: 5px; /* Радиус скругления */
+    padding: 2%; /* Поля */
+   }
+   figure:first-child {
+    margin-left: 0; /* Убираем отступ для первого элемента */
+   }
+
+  </style>
+ 
+ </head>
+ <body>
+  <div class="block">
+    <p><img src="{% static 'app/content/p1.jpg ' %}" alt="logo" width="100%" /> </p>
+	<p> <img src="{% static 'app/content/p2.jpg ' %}" alt="logo" width="100%" /> </p>
+	<p> <img src="{% static 'app/content/p3.jpg ' %}" alt="logo"  width="100%"/> </p>
+	<p> <img src="{% static 'app/content/p4.jpg ' %}" alt="logo" width="100%" /> </p>
+	<p> <img src="{% static 'app/content/p5.png ' %}" alt="logo" width="100%" /> </p>
+	<p> <img src="{% static 'app/content/p6.png ' %}" alt="logo" width="100%" /> </p>
+	<p> <img src="{% static 'app/content/p7.jpg ' %}" alt="logo" width="100%" /> </p>
+	<p> <img src="{% static 'app/content/p8.jpg ' %}" alt="logo" width="100%" /> </p>
+  </div>
+ </body>
+</html>
+	{% endblock %}

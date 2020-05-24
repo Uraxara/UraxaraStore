@@ -1,0 +1,244 @@
+{% extends "app/layout.html" %} 
+ 
+{% block content %} 
+   
+ <style>
+
+ html {
+    min-height: 100%;
+}
+
+   body {
+   
+     text-decoration: none;
+  outline: none;
+  color: white;
+
+ 
+   text-align: center;
+	
+	
+	 margin: 10px 70px;
+	 
+	  border-radius: 58px;
+   }
+
+.poost{ border: 5px solid;
+  border-image: linear-gradient(180deg, #ff3000, #ed0200, #ff096c, #d50082);
+  border-image-slice: 1;
+  
+  background: rgba(0,0,0,0.6); /* Полупрозрачный фон */
+    color: #fff; /* Цвет текста */
+    padding: 20px; /* Поля вокруг текста */
+	 overflow: hidden;
+  letter-spacing: 2px;
+  transition: .8s cubic-bezier(.165,.84,.44,1);
+  
+  
+  
+  
+  }
+  
+  
+  
+  h1 {
+	display: table;
+
+	font-family: "Roboto Slab";
+
+
+	background: linear-gradient(330deg, #e05252 0%, #99e052 25%, #52e0e0 50%, #9952e0 75%, #e05252 100%);
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+
+	
+	text-align:start; 
+	margin-top: 0px;
+}
+  
+  
+  
+  
+  .post1 {
+  background: rgba(0,0,0,0.2); /* Полупрозрачный фон */
+    color: #fff; /* Цвет текста */
+    padding: 20px; /* Поля вокруг текста */
+	
+	
+	 margin: 10px 70px;
+	 
+	  border-radius: 58px;
+	  
+	  
+	  
+  }
+  
+  
+  
+.button1{
+  text-decoration: none;
+    text-align: center;
+  outline: none;
+  display: inline-block;
+  padding: 5px 40px;
+  margin: 10px 20px;
+  position: relative;
+  overflow: hidden;
+  border: 2px solid ;
+    background-color: rgba(0,0,0,0.1);
+  border-color: rgba(0,0,0,0.1);
+  
+  border-radius: 18px;
+  font-family: 'Montserrat', sans-serif; 
+  font-size:20px;
+  color: rgba(0,0,0,0.0);
+  transition: .4s ease-in-out;
+}
+.button1:before {
+  content: "";
+  
+  border-color: rgba(0,0,0,0.0);
+  
+  background: linear-gradient(90deg, rgba(255,255,255,.1), rgba(255,255,255,.5));
+  height: 85px;
+  width: 50px;
+  position: absolute;
+  top: -8px;
+  left: -75px;
+  transform: skewX(-45deg);
+}
+.button1:hover {
+  background: #049726;
+  color: #fff;
+}
+.button1:hover:before {
+  left: 350px;
+  transition: .9s ease-in-out;
+}
+textarea#id_phone {
+height:50px;
+}
+
+textarea#id_text {
+height:200px;
+}
+
+textarea {
+display:block;
+
+height:100px;/*Длина:400px*/
+margin:0 auto;
+resize:vertical;
+outline:none;/*Светящаяся рамка:убераем*/
+border-width:2px;/*Ширина рамки:2px*/
+border-radius:10px;/*Скругление углов:2px*/
+
+border-color:#0D4BC3;
+
+font-size:18pt;/*Размер шрифта/
+color:#464346;
+
+text-align:start;/*Положение текста:по центру*/
+background:#EBE2EE;
+font-style: oblique;
+ 
+}
+
+.button a{
+  text-decoration: none;
+    text-align: center;
+  outline: none;
+  display: inline-block;
+
+  position: relative;
+  overflow: hidden;
+  border: 2px solid ;
+  
+    border-color: rgba(0,0,0,0.0);
+  
+  border-radius: 18px;
+  font-family: 'Montserrat', sans-serif; 
+  font-size:20px;
+  color: rgba(0,0,0,0.0);
+  transition: .4s ease-in-out;
+}
+.button a:before {
+  content: "";
+  
+  border-color: rgba(0,0,0,0.0);
+  
+  background: linear-gradient(90deg, rgba(255,255,255,.1), rgba(255,255,255,.5));
+  height: 85px;
+  width: 50px;
+  position: absolute;
+  top: -8px;
+  left: -75px;
+  transform: skewX(-45deg);
+}
+.button a:hover {
+  background: #C712D5;
+  color: #fff;
+}
+.button a:hover:before {
+  left: 950px;
+  transition: .9s ease-in-out;
+}
+
+
+  </style>
+
+
+ 
+ 
+ <div class="block">
+<h2 > {{ post_1.title }} </h2> 
+  {% if user.is_active %} 
+<div class="button">
+ <a class="button1" href="additem">Удалить заказ</a>
+ </div>
+ {% endif %} 
+<p class="blog" > {{ post_1.content|linebreaksbr }} </p>
+</div>
+{% if user.is_authenticated %}     
+
+    <div class="post1">
+  <form method="POST" enctype="multipart/form-data">{% csrf_token %}    
+  <div id="coment">         
+    {{ form.as_p }}          
+      <button type="submit" onclick="alert('Спасибо, в ближайшее время с вами свяжутся!.')" class="button button1" > Оставить заказ </button>     
+	  
+
+  
+  </div>     
+  </form> 
+  
+  </div>
+{% else %}     
+  <h1 style="font-size:35px;  text-align:start; margin-top: 0px; ">Для заказа в магазине, пожалуйста, авторизуйтесь</h1>
+{% endif %} 
+{% if user.is_staff %} 
+<div class="button">
+ <a class="button1" href="deleteall">Очистить заказы</a>
+ </div>
+ {% endif %}
+{%  for comment in comments  %} 
+{% if user.is_staff %}  
+
+ <div class="poost">
+
+<h1 style="font-size:25px;  text-align:start; margin-top: 0px; "> {{ comment.author }} </h1> 
+<h1 style="font-size:20px;  text-align:left; margin-bottom: 0px; letter-spacing: 0px;"> {{ comment.phone}} </h1> 
+<p> {{ comment.text}} </p> 
+<h5 style="font-size:10px;  text-align:end; margin-bottom: 0px; letter-spacing: 0px; ">{{ comment.mail}} </h5> 
+<h5 style="font-size:10px;  text-align:end; margin-bottom: 0px; letter-spacing: 0px; "> {{ comment.date }} </h5> 
+
+ {% if user.is_active %} 
+<div class="button">
+ <a class="button1" href="additem">Подтвердить заказ</a>
+ </div>
+ {% endif %}
+
+ </div>
+   {% endif %}
+{%  endfor %}
+{% endblock %} 
