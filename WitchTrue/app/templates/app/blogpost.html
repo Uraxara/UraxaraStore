@@ -194,7 +194,7 @@ font-style: oblique;
 <h2 > {{ post_1.title }} </h2> 
   {% if user.is_active %} 
 <div class="button">
- <a class="button1" href="additem">Удалить заказ</a>
+ <a class="button1" href="additem">Добавить в корзину</a>
  </div>
  {% endif %} 
 <p class="blog" > {{ post_1.content|linebreaksbr }} </p>
@@ -205,7 +205,7 @@ font-style: oblique;
   <form method="POST" enctype="multipart/form-data">{% csrf_token %}    
   <div id="coment">         
     {{ form.as_p }}          
-      <button type="submit" onclick="alert('Спасибо, в ближайшее время с вами свяжутся!.')" class="button button1" > Оставить заказ </button>     
+      <button type="submit" onclick="alert('Спасибо, ваше мнение важно для нас!.')" class="button button1" > Оставить комментарий </button>     
 	  
 
   
@@ -218,7 +218,7 @@ font-style: oblique;
 {% endif %} 
 {% if user.is_staff %} 
 <div class="button">
- <a class="button1" href="deleteall">Очистить заказы</a>
+ <a class="button1" href="deleteall">Очистить комментарии</a>
  </div>
  {% endif %}
 {%  for comment in comments  %} 
@@ -233,9 +233,6 @@ font-style: oblique;
 <h5 style="font-size:10px;  text-align:end; margin-bottom: 0px; letter-spacing: 0px; "> {{ comment.date }} </h5> 
 
  {% if user.is_active %} 
-<div class="button">
- <a class="button1" href="additem">Подтвердить заказ</a>
- </div>
  {% endif %}
 
  </div>
