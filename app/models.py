@@ -28,9 +28,9 @@ admin.site.register(Blog)
 
 # Модель комментариев 
 class Comment(models.Model):     
-  text = models.TextField(verbose_name = "Комментарий")    
-  phone = models.TextField(verbose_name = "Способ связи") 
-  mail = models.TextField(verbose_name = "Срок выполнения")  
+  text = models.TextField(verbose_name = "Отзыв")    
+  phone = models.TextField(verbose_name = "Оценка магазина") 
+  mail = models.TextField(verbose_name = "Что не понравилось")  
   date = models.DateTimeField(default = datetime.now(), db_index = True, verbose_name = "Дата")     
   author = models.ForeignKey(User, on_delete = models.CASCADE, verbose_name = "Автор")        # из модели User (вторичный ключ), каскадное удаление записей в обоих таблицах    
   post = models.ForeignKey(Blog, on_delete = models.CASCADE, verbose_name = "Статья")         # из модели Blog (вторичный ключ),  каскадное удаление записей в обоих таблицах          
